@@ -5,6 +5,7 @@
 
 
 @updateTime: 2020.5.8
+@brife: 用于获取B站给定url视频的弹幕(无需登录, 无需cookie)
 @notice:
     If you have suggestions or find bugs, please be sure to tell me. Thanks!
 """
