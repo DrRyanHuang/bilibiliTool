@@ -49,7 +49,9 @@
 
 <font face=楷体>用于获得B站上传状态，是拥挤还是爆满等</font>
 
-![state.png](src/state.png)
+![state.png](https://github.com/DrRyanHuang/bilibiliTool/blob/master/src/state.png)
+
+
 
 <font face=楷体>爬取时需要用户手动提供`cookie`字符串</font>
 <font face=楷体>且勿关闭该cookies所属session, 即别关那个获得cookie的网页</font>
