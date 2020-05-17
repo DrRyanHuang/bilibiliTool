@@ -40,7 +40,7 @@
 
 
 
-<div align=center><img src="https://github.com/Legend-yd/MyDawn/blob/master/20171223205540585.png" width="300" height="450" /></div>
+
 
 
 
@@ -49,7 +49,7 @@
 
 <font face=楷体>用于获得B站上传状态，是拥挤还是爆满等</font>
 
-![state.png](https://github.com/DrRyanHuang/bilibiliTool/raw/master/src/state.png)
+![state.png](https://github.com/DrRyanHuang/bilibiliTool/blob/master/src/state.png)
 
 
 
