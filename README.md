@@ -1,12 +1,31 @@
-# bilibiliTool
+<h1 align="center">- Bilibili Tool -</h1>
+
+<p align="center">
+<img src="https://img.shields.io/badge/version-2020.05.08-green.svg?longCache=true&style=for-the-badge">
+<img src="https://img.shields.io/badge/license-GPL%20(%3E%3D%202)-blue.svg?longCache=true&style=for-the-badge">
+</p>
 
 
 
-@author: RyanHuang
+<pre>
+    ________   ___   ___        ___   ________   ___   ___        ___
+   |\   __  \ |\  \ |\  \      |\  \ |\   __  \ |\  \ |\  \      |\  \
+   \ \  \|\ /_\ \  \\ \  \     \ \  \\ \  \|\ /_\ \  \\ \  \     \ \  \
+    \ \   __  \\ \  \\ \  \     \ \  \\ \   __  \\ \  \\ \  \     \ \  \
+     \ \  \|\  \\ \  \\ \  \____ \ \  \\ \  \|\  \\ \  \\ \  \____ \ \  \
+      \ \_______\\ \__\\ \_______\\ \__\\ \_______\\ \__\\ \_______\\ \__\
+       \|_______| \|__| \|_______| \|__| \|_______| \|__| \|_______| \|__|
+</pre>
 
-@github: DrRyanHuang
 
-@email:  ZihaoHuang@aliyun.com
+<h4 align="center">🛠️ 哔哩哔哩（B站）低级工具箱，用于爬取B站弹幕，爬取B站评论，获取当前上传状态等</h4>
+
+
+
+
+
+
+
 
 
 
@@ -28,9 +47,28 @@
 
 
 
-
+<center><pre>
+                //
+    \\         //
+     \\       //
+    ##DDDDDDDDDDDDDDDDDDDDDD##
+    ## DDDDDDDDDDDDDDDDDDDD ##
+    ## hh                hh ##
+    ## hh    //    \\    hh ##
+    ## hh   //      \\   hh ##
+    ## hh                hh ##
+    ## hh      wwww      hh ##
+    ## hh                hh ##
+    ## MMMMMMMMMMMMMMMMMMMM ##
+    ##MMMMMMMMMMMMMMMMMMMMMM##
+     \/            \/
+</pre></center>
 
 持续更新，欢迎fork，欢迎交流！
 
 
+
+<p>@author: RyanHuang</p>
+<p>@github: DrRyanHuang</p>
+<p>@email:  ZihaoHuang@aliyun.com</p>
 
