@@ -65,7 +65,9 @@
 
 -------------------
 
-另外，最近一直在给B站搜集分词，在`分词.txt`里面，欢迎大家一起来补充
+另外，最近一直在给B站搜集分词，在`分词`目录下，欢迎大家一起来补充！
+
+希望大家和我一起来建立B站分词字典：https://www.bilibili.com/read/cv6388554
 
 
 
@@ -89,11 +91,13 @@
 </pre></p>
 
 
-持续更新，欢迎fork，欢迎交流！
 
 
+| 持续更新，欢迎fork，欢迎交流！ |                       |
+| ------------------------------ | --------------------- |
+| @author                        | RyanHuang             |
+| @github                        | DrRyanHuang           |
+| @email                         | ZihaoHuang@aliyun.com |
 
-<p>@author: RyanHuang</p>
-<p>@github: DrRyanHuang</p>
-<p>@email:  ZihaoHuang@aliyun.com</p>
+
 
