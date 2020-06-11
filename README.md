@@ -67,7 +67,7 @@
 
 另外，最近一直在给B站搜集分词，在`分词`目录下，欢迎大家一起来补充！
 
-希望大家和我一起来建立B站分词字典：https://www.bilibili.com/read/cv6388554
+希望大家和我一起来建立B站分词字典：[https://github.com/DrRyanHuang/bilibiliTool/tree/master/分词](https://github.com/DrRyanHuang/bilibiliTool/tree/master/分词)
 
 
 
