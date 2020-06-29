@@ -23,6 +23,8 @@ def getXMlUrl(reponse_text):
         (为了使代码可拓展性更好, 将此函数单独写出)
     @para:
         reponse_text : 响应的内容(Content of the response)
+    @notice:
+        弹幕所需要的oid和评论所需要的oid竟然不是一个oid
     '''
 
     match_rule = r'cid=(.*?)&aid'
