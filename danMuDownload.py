@@ -114,7 +114,7 @@ def getDanMu(bv_url, headers=None, getXMlUrlFun=None, getDanmuFunc=None, save_bo
         headers       :  请求头, 详见 `requests.request` 参数解析
         getXMlUrlFun  :  获得XML链接的函数
         getDanmuFunc  :  处理弹幕数据的函数
-        save_bool     :  是否保存
+        save_bool     :  是否保存(优先级高于`save_path`)
         save_path     :  保存路径
 
         注: 若 `getXMlUrlFun` 和 `getDanmuFunc` 参数需要修改, 则推荐使用 `lambda` 表达式
