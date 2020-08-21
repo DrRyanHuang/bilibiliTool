@@ -125,3 +125,4 @@ dmypy.json
 .pyre/
 danmu.csv
 state_csv.csv
+x.json
