@@ -55,7 +55,8 @@ def getPageInfo(xml_url, headers=None):
     
     # 通过第一页评论 json , 获得评论的部分信息
     info_dic = data_first['data']['page']
-    info_dic['page_count'] = info_dic['count'] // info_dic['size'] + 1
+    info_dic['page_count'] = info_dic['count'] // info_dic['size'] + \
+                            1 if (info_dic['count'] % info_dic['size']) else 0
     
     return info_dic
 
