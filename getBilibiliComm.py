@@ -56,7 +56,7 @@ def getPageInfo(xml_url, headers=None):
     # 通过第一页评论 json , 获得评论的部分信息
     info_dic = data_first['data']['page']
     info_dic['page_count'] = info_dic['count'] // info_dic['size'] + \
-                            1 if (info_dic['count'] % info_dic['size']) else 0
+                            (1 if (info_dic['count'] % info_dic['size']) else 0)
     
     return info_dic
 
@@ -98,6 +98,7 @@ def getCommList(bv_url, headers=None, getXMlUrl_func=None, getPageInfo_func=None
 
     # 用于存放所有评论    
     data_comm_all = []
+    
     for i in range(1, info['page_count']+1):
         
         # 获取未提取有用信息的评论响应
