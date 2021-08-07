@@ -5,7 +5,8 @@
 
 
 @updateTime: 2021.08.06
-@brife: 用于获取B站给定url视频的硬币收藏数等(无需登录, 无需cookie)
+@brife: 本代码无效, 用于测试
+
 @notice:
     If you have suggestions or find bugs, please be sure to tell me. Thanks!
 """
@@ -16,76 +17,6 @@ import re
 
 
 # https://api.bilibili.com/x/player/v2?cid=217465303&aid=711571561&bvid=BV1JD4y1U72G
-
-
-def __get_aid(reponse_text):
-    '''
-    @brife:
-        获得当前视频的 aid
-        (为了使代码可拓展性更好, 将此函数单独写出)
-    @para:
-        reponse_text : 响应的内容(Content of the response)
-    @notice:
-        该 aid 和弹幕的oid是同一个
-    '''
-    match_rule = r'&aid=(.*?)&attribute'
-    aid = re.search(match_rule ,reponse_text).group().replace('&aid=','').replace('&attribute','')
-
-    return aid
-
-
-
-
-def getVideoInfoFromAid(aid, headers=None):
-    '''
-    @Brife:
-        通过 `aid` 获得视频的数据
-        
-        aid、bvid、view(视频播放数)、danmaku(总弹幕数)、reply(评论数)
-        share(分享数)、like(点赞数)、favorite(收藏)、coin(投币数)
-    @Param:
-        aid     : B站视频的 `aid`
-        headers : 请求头字典
-    @Return:
-        video_info : 返回B站视频的点赞收藏量字典
-    @Notice:
-        
-        以下参数暂时未知:
-            
-            "now_rank": 0,
-            "his_rank": 0,
-            "no_reprint": 1,
-            "copyright": 1,
-            "argue_msg": "",
-            "evaluation": ""
-
-    '''
-    data_url = 'https://api.bilibili.com/x/web-interface/archive/stat?aid={}'.format(aid)
-    
-    if headers is None:
-        headers = {
-          'User-Agent':'Mozilla/5.0',
-        }
-    
-    repon = r.get(data_url, headers=headers)
-    repon.encoding = repon.apparent_encoding
-    
-    repon_str = json.loads(repon.text)
-    '''
-    注:
-        >>> repon_str.keys()
-        dict_keys(['code', 'message', 'ttl', 'data'])
-        
-        >>> # 此处的键: 'code', 'message', 'ttl', 暂时未知, 但应该对本代码不影响
-    '''
-    video_info = repon_str['data']
-    
-    return video_info
-
-
-
-
-
 
 
 
