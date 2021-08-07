@@ -4,10 +4,10 @@
 @github: DrRyanHuang
 
 
-@updateTime: 2020.5.16
+@updateTime: 2021.08.06
 @brife: 使用cookies获取B站在一定时间内投稿队列状态，拥挤还是什么别的
 @notice:
-    If you have suggestions or find bugs, please be sure to tell me. Thanks!
+    If you have suggestions or find bugs, please tell me. Thanks!
 """
 
 import os
@@ -58,10 +58,15 @@ def getCurrentState(user_cookie, data_url=None, headers=None):
     
     data_dict = json.loads(resp.text)
     
-    # 添加时间
-    data_return = data_dict['data']['video_jam'].copy()
-    data_return['time'] = time.time()
-    
+    if data_dict['code'] == 0:
+        # 添加时间
+        data_return = data_dict['data']['video_jam'].copy()
+        data_return['time'] = time.time()
+        print(data_return['comment'])
+    else:
+        print("----- Cookie字符串异常, 无法获取 -----")
+        data_return = [None]*3 + [time.time()]
+        
     return data_return
 
 
@@ -107,13 +112,15 @@ def createStateCSV(cookie_str, csv_path=None, max_run_time=86400, crawl_interval
                     temp = pd.read_csv(csv_path)
                     csv_df = csv_df.append(temp)
                     csv_df.to_csv(csv_path, index=False)
+                
+                print('最大运行时间已到, 程序结束')
                 break
                     
             time.sleep(crawl_interval)
         
     except KeyboardInterrupt:
         
-        print('进入正常退出程序段')
+        print('手动结束程序')
         csv_df = pd.DataFrame(data_list, columns=columns)
         # 如果手动中断
         if not os.path.exists(csv_path):
@@ -125,6 +132,10 @@ def createStateCSV(cookie_str, csv_path=None, max_run_time=86400, crawl_interval
             csv_df.to_csv(csv_path, index=False)
 
 
-
-
+if __name__ == "__main__":
+    # 此代码用于测试
+    
+    cookie_str = "" # 此处传入你的字符串
+    getCurrentState(cookie_str)
+    createStateCSV(cookie_str, max_run_time=5, crawl_interval=0.5)
 

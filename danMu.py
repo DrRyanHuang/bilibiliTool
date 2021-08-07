@@ -4,7 +4,7 @@
 @github: DrRyanHuang
 
 
-@updateTime: 2020.5.8
+@updateTime: 2021.08.06
 @brife: 用于获取B站给定url视频的弹幕(无需登录, 无需cookie)
 @notice:
     If you have suggestions or find bugs, please be sure to tell me. Thanks!
@@ -16,7 +16,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 
-def getXMlUrl(reponse_text):
+def __getXMlUrl(reponse_text):
     '''
     @brife:
         获得B站弹幕xml的url
@@ -41,7 +41,7 @@ def get_df_DanMuFromXML(xml_url, headers=None, save_bool=False, save_path=None):
     '''
     @brife:
         从XML链接中, 获得B站弹幕, 并返回df
-        (为了使代码可拓展性更好, 将此函数单独写出)
+        (为了使代码可拓展性更好, 将此函数单独写出, 实际上并没有卵用hhh)
     @para:
         xml_url   : 响应的内容(Content of the response)
         headers   : 请求头字典
@@ -72,7 +72,7 @@ def get_df_DanMuFromXML(xml_url, headers=None, save_bool=False, save_path=None):
 
         all_danmu.append(item_list)
 
-    # 出现时间
+    # 在视频中的出现时间
     # 弹幕类型  1为滚动弹幕 4位底部弹幕 5为顶部弹幕
     # 字的大小  分别为 18 和 25
     # 颜色 : FF FF FF为最大值, 转换为了 16 进制
@@ -80,6 +80,7 @@ def get_df_DanMuFromXML(xml_url, headers=None, save_bool=False, save_path=None):
     # 是否被保护 ??
     # 用户 id ??
     # 弹幕 id ?? (其在XML中为递增, 与时间戳同为递增)
+    # Update(2021.08.06): 这个俺不知道是啥, 去年的这个时候还没有这个属性, 范围是3到10
 
     columns = ['出现时间',
                '弹幕类型',
@@ -89,6 +90,7 @@ def get_df_DanMuFromXML(xml_url, headers=None, save_bool=False, save_path=None):
                'unknown_5',
                'unknown_6',
                'unknown_7',
+               'unknown_8',
                '弹幕内容']
 
     danmu_df = pd.DataFrame(all_danmu, columns=columns)
@@ -110,7 +112,7 @@ def getDanMu(bv_url, headers=None, getXMlUrlFun=None, getDanmuFunc=None, save_bo
         从B站链接中下载弹幕
         (为了使代码可拓展性更好, 可将处理函数传入)
     @para:
-        bv_url        :  B站视频链接
+        bv_url        :  可以直接提供BV视频的url, 也可以直接提供BV号
         headers       :  请求头, 详见 `requests.request` 参数解析
         getXMlUrlFun  :  获得XML链接的函数
         getDanmuFunc  :  处理弹幕数据的函数
@@ -119,7 +121,9 @@ def getDanMu(bv_url, headers=None, getXMlUrlFun=None, getDanmuFunc=None, save_bo
 
         注: 若 `getXMlUrlFun` 和 `getDanmuFunc` 参数需要修改, 则推荐使用 `lambda` 表达式
     '''
-
+    if 'https://' not in bv_url:
+        bv_url = 'https://www.bilibili.com/video/{}'.format(bv_url)
+    
     if headers is None:
 
         headers = {
@@ -127,7 +131,7 @@ def getDanMu(bv_url, headers=None, getXMlUrlFun=None, getDanmuFunc=None, save_bo
         }
 
     if getXMlUrlFun is None:
-        getXMlUrlFun = getXMlUrl
+        getXMlUrlFun = __getXMlUrl
 
     if getDanmuFunc is None:
         getDanmuFunc = get_df_DanMuFromXML
@@ -135,8 +139,14 @@ def getDanMu(bv_url, headers=None, getXMlUrlFun=None, getDanmuFunc=None, save_bo
     resp = requests.get(bv_url, headers=headers)
 
     # 得到弹幕XML链接
-    danmuXML_url = getXMlUrlFun(resp.text)
+    danmuXML_url = getXMlUrlFun(resp.text) # 建议用户直接浏览器访问该URL, 以获取更多信息
     # 得到弹幕数据
     danmu_df = getDanmuFunc(danmuXML_url, save_bool=save_bool, save_path=save_path)
 
     return danmu_df
+
+if __name__ == '__main__':
+    
+    # 以下代码用于测试
+    bv_url = 'https://www.bilibili.com/video/BV1bb4y1z7Gm' # 暴走大事件yyds
+    need = getDanMu(bv_url, save_bool=True)

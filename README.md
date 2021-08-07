@@ -1,7 +1,7 @@
 <h1 align="center">- Bilibili Tool -</h1>
 
 <p align="center">
-<img src="https://img.shields.io/badge/version-2020.05.08-green.svg?longCache=true&style=for-the-badge">
+<img src="https://img.shields.io/badge/version-V0.2-green.svg?longCache=true&style=for-the-badge">
 <img src="https://img.shields.io/badge/license-GPL%20(%3E%3D%202)-blue.svg?longCache=true&style=for-the-badge">
 </p>
 
@@ -34,44 +34,39 @@
 
 
 
-<h4 align="center">🛠️ 哔哩哔哩（B站）低级工具箱，用于爬取B站弹幕，爬取B站评论，获取当前上传状态等</h4>
-
-
-
-好久好久不更新了，有很多功能我是懒得实现，最近天天加班，写这个纯粹是为了玩，大家有啥需求在issue里提吧，我抽空写一下hhh
-
-好久好久不更新了，有很多功能我是懒得实现，最近天天加班，写这个纯粹是为了玩，大家有啥需求在issue里提吧，我抽空写一下hhh
-
-好久好久不更新了，有很多功能我是懒得实现，最近天天加班，写这个纯粹是为了玩，大家有啥需求在issue里提吧，我抽空写一下hhh
-
----------
+<h4 align="center">🛠️ 哔哩哔哩（B站）低(mei)级(yong)工具箱</h4>
 
 
 
 
 
+#### `updataState.py`
 
-### `getBilibiliUpdataState.py`
+用于获得B站上传状态，是拥挤还是爆满等
 
-<font face=楷体>用于获得B站上传状态，是拥挤还是爆满等</font>
+![state.png](./src/state.png)
 
-![state.png](https://github.com/DrRyanHuang/bilibiliTool/blob/master/src/state.png)
+爬取时需要用户手动提供`cookie`字符串
+且勿关闭该cookies所属session, 即别关那个获得cookie的网页
 
 
 
-<font face=楷体>爬取时需要用户手动提供`cookie`字符串</font>
-<font face=楷体>且勿关闭该cookies所属session, 即别关那个获得cookie的网页</font>
+#### `danMu.py`
+爬取单个视频的弹幕，给定参数后可以保存到给定目录，不需要用户cookie，只需要BV视频的url
 
--------------------
 
-### `danMuDownload.py`
-<font face=楷体>爬取单个视频的弹幕，给定参数后可以保存到给定目录，不需要用户cookie，只需要BV视频的url</font>
+#### `Comment.py`
+爬取单个视频的评论，给定参数后可以保存到给定目录，不需要用户cookie，只需要BV视频的url
 
--------------------
 
-另外，最近一直在给B站搜集分词，在`分词`目录下，欢迎大家一起来补充！
+#### `currentWatch.py`
+获取该视频当前的观看人数，不需要用户cookie，只需要BV视频的url
 
-希望大家和我一起来建立B站分词字典：[https://github.com/DrRyanHuang/bilibiliTool/tree/master/分词](https://github.com/DrRyanHuang/bilibiliTool/tree/master/分词)
+
+#### `pageInfo.py`
+获取该视频每一P的信息(包括名字, 播放时长等信息)，不需要用户cookie，只需要BV视频的url
+
+
 
 
 
@@ -101,7 +96,6 @@
 | ------------------------------ | --------------------- |
 | @author                        | RyanHuang             |
 | @github                        | DrRyanHuang           |
-| @email                         | ZihaoHuang@aliyun.com |
 
 
 

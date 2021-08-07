@@ -1,5 +1,38 @@
+# -*- coding: utf-8 -*-
+"""
+@author: RyanHuang
+@github: DrRyanHuang
+
+
+@updateTime: 2021.08.06
+@brife: 用于获取B站给定url视频的硬币收藏数等(无需登录, 无需cookie)
+@notice:
+    If you have suggestions or find bugs, please be sure to tell me. Thanks!
+"""
+
 import json
 import requests as r
+import re
+
+
+# https://api.bilibili.com/x/player/v2?cid=217465303&aid=711571561&bvid=BV1JD4y1U72G
+
+
+def __get_aid(reponse_text):
+    '''
+    @brife:
+        获得当前视频的 aid
+        (为了使代码可拓展性更好, 将此函数单独写出)
+    @para:
+        reponse_text : 响应的内容(Content of the response)
+    @notice:
+        该 aid 和弹幕的oid是同一个
+    '''
+    match_rule = r'&aid=(.*?)&attribute'
+    aid = re.search(match_rule ,reponse_text).group().replace('&aid=','').replace('&attribute','')
+
+    return aid
+
 
 
 
@@ -48,6 +81,11 @@ def getVideoInfoFromAid(aid, headers=None):
     video_info = repon_str['data']
     
     return video_info
+
+
+
+
+
 
 
 

@@ -123,6 +123,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-danmu.csv
-state_csv.csv
-x.json
+
+
+*.csv
+*.json
